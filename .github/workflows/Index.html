@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>विश्वकर्मा इलेक्ट्रिक वर्क्स - मोटर वाइंडिंग और रिपेयरिंग</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            margin-left: 10px;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #3498db;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1581094794321-8410e49a6c7d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: #2c3e50;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #3498db;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-img {
+            height: 180px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #3498db;
+        }
+
+        .service-content {
+            padding: 1.5rem;
+        }
+
+        .service-content h3 {
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            height: 400px;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: #3498db;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-form {
+            flex: 1;
+        }
+
+        .contact-details {
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: #3498db;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column {
+            flex: 1;
+            margin-right: 2rem;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: #3498db;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 1rem;
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+
+            .mobile-menu {
+                display: block;
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+            }
+
+            .about-content, .contact-container {
+                flex-direction: column;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+
+            .footer-column {
+                margin-right: 0;
+                margin-bottom: 2rem;
+            }
+        }
+
+        /* Page Styles */
+        .page {
+            display: none;
+            padding: 2rem 0;
+        }
+
+        .active {
+            display: block;
+        }
+
+        /* Image Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            height: 200px;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #3498db;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">⚡</div>
+                    <h1>विश्वकर्मा इलेक्ट्रिक वर्क्स</h1>
+                </div>
+                <div class="mobile-menu">☰</div>
+                <nav>
+                    <ul>
+                        <li><a href="#" class="nav-link" data-page="home">होम</a></li>
+                        <li><a href="#" class="nav-link" data-page="about">हमारे बारे में</a></li>
+                        <li><a href="#" class="nav-link" data-page="services">सेवाएं</a></li>
+                        <li><a href="#" class="nav-link" data-page="gallery">गैलरी</a></li>
+                        <li><a href="#" class="nav-link" data-page="contact">संपर्क</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <section id="home" class="page active">
+        <div class="hero">
+            <div class="container">
+                <h2>विश्वकर्मा इलेक्ट्रिक वर्क्स</h2>
+                <p>समस्त प्रकार की मोटर वाइंडिंग, रिपेयरिंग और बिक्री सेवाएं</p>
+                <a href="#" class="btn nav-link" data-page="services">हमारी सेवाएं देखें</a>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="section-title">
+                <h2>हमारी सेवाएं</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img">🌀</div>
+                    <div class="service-content">
+                        <h3>पंखा मोटर वाइंडिंग</h3>
+                        <p>सभी प्रकार के पंखों की मोटर वाइंडिंग और रिपेयरिंग</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">💧</div>
+                    <div class="service-content">
+                        <h3>पंप मोटर वाइंडिंग</h3>
+                        <p>टुल्लू पंप, मोनोब्लॉक पंप, सबमर्सिबल पंप की वाइंडिंग</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">🔧</div>
+                    <div class="service-content">
+                        <h3>मशीन मोटर वाइंडिंग</h3>
+                        <p>ड्रिल, हैमर, कटर, ग्राइंडर मशीनों की मोटर वाइंडिंग</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Page -->
+    <section id="about" class="page">
+        <div class="container">
+            <div class="section-title">
+                <h2>हमारे बारे में</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>विश्वकर्मा इलेक्ट्रिक वर्क्स रीवा, मध्य प्रदेश में स्थित एक विश्वसनीय मोटर वाइंडिंग और रिपेयरिंग की दुकान है। हम 30+ वर्षों से इस क्षेत्र में कार्यरत हैं और ग्राहकों को गुणवत्तापूर्ण सेवाएं प्रदान कर रहे हैं।</p>
+                    <br>
+                    <p>हम समस्त प्रकार की मोटरों की वाइंडिंग, रिपेयरिंग और बिक्री करते हैं, चाहे वह धरती के ऊपर चलने वाली मोटर हो या धरती के नीचे चलने वाली मोटर।</p>
+                    <br>
+                    <p>हमारा उद्देश्य ग्राहकों को सही कीमत पर उच्च गुणवत्ता वाली मोटर सेवाएं प्रदान करना है।</p>
+                    <br>
+                    <h3>प्रोपराइटर: राजेंद्र विश्वकर्मा</h3>
+                </div>
+                <div class="about-image">
+                    <div>🏭</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Page -->
+    <section id="services" class="page">
+        <div class="container">
+            <div class="section-title">
+                <h2>हमारी सेवाएं</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img">🌀</div>
+                    <div class="service-content">
+                        <h3>पंखा वाइंडिंग</h3>
+                        <p>सभी प्रकार के पंखों की मोटर वाइंडिंग</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">❄️</div>
+                    <div class="service-content">
+                        <h3>कूलर वाइंडिंग</h3>
+                        <p>सभी प्रकार के कूलरों की मोटर वाइंडिंग</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">💧</div>
+                    <div class="service-content">
+                        <h3>टुल्लू पंप वाइंडिंग</h3>
+                        <p>टुल्लू पंपों की मोटर वाइंडिंग और रिपेयरिंग</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">🔌</div>
+                    <div class="service-content">
+                        <h3>मोनोब्लॉक पंप वाइंडिंग</h3>
+                        <p>मोनोब्लॉक पंपों की मोटर वाइंडिंग</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">🌊</div>
+                    <div class="service-content">
+                        <h3>सबमर्सिबल पंप वाइंडिंग</h3>
+                        <p>सबमर्सिबल पंपों की मोटर वाइंडिंग</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">⚙️</div>
+                    <div class="service-content">
+                        <h3>चक्की मोटर वाइंडिंग</h3>
+                        <p>चक्की मोटरों की वाइंडिंग और रिपेयरिंग</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">🔨</div>
+                    <div class="service-content">
+                        <h3>ड्रिल मशीन वाइंडिंग</h3>
+                        <p>ड्रिल मशीनों की मोटर वाइंडिंग</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">⚒️</div>
+                    <div class="service-content">
+                        <h3>हैमर मशीन वाइंडिंग</h3>
+                        <p>हैमर मशीनों की मोटर वाइंडिंग</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">✂️</div>
+                    <div class="service-content">
+                        <h3>कटर मशीन वाइंडिंग</h3>
+                        <p>कटर मशीनों की मोटर वाइंडिंग</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">🔪</div>
+                    <div class="service-content">
+                        <h3>कटर ग्राइंडर वाइंडिंग</h3>
+                        <p>कटर ग्राइंडर मशीनों की वाइंडिंग</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">💨</div>
+                    <div class="service-content">
+                        <h3>ब्लोवर वाइंडिंग</h3>
+                        <p>ब्लोवरों की मोटर वाइंडिंग</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">🧱</div>
+                    <div class="service-content">
+                        <h3>टाइल्स कटर वाइंडिंग</h3>
+                        <p>टाइल्स कटर मशीनों की वाइंडिंग</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">🌀</div>
+                    <div class="service-content">
+                        <h3>सिन्नी टेबल फैन वाइंडिंग</h3>
+                        <p>सिन्नी टेबल फैनों की वाइंडिंग</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">🔄</div>
+                    <div class="service-content">
+                        <h3>फर्राटा वाइंडिंग</h3>
+                        <p>फर्राटा मोटरों की वाइंडिंग</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">🛒</div>
+                    <div class="service-content">
+                        <h3>मोटर बिक्री</h3>
+                        <p>नई और रिपेयर की गई मोटरों की बिक्री</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Page -->
+    <section id="gallery" class="page">
+        <div class="container">
+            <div class="section-title">
+                <h2>हमारे काम की गैलरी</h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">🌀</div>
+                <div class="gallery-item">💧</div>
+                <div class="gallery-item">🔧</div>
+                <div class="gallery-item">❄️</div>
+                <div class="gallery-item">🔌</div>
+                <div class="gallery-item">🌊</div>
+                <div class="gallery-item">⚙️</div>
+                <div class="gallery-item">🔨</div>
+                <div class="gallery-item">⚒️</div>
+                <div class="gallery-item">✂️</div>
+                <div class="gallery-item">🔪</div>
+                <div class="gallery-item">💨</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Page -->
+    <section id="contact" class="page">
+        <div class="container">
+            <div class="section-title">
+                <h2>हमसे संपर्क करें</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>हमारा पता</h3>
+                    <p>गोलपार्क, पुराना बस स्टैंड, नए इंडियन कॉफी हाउस कलेक्ट्रेट परिसर के सामने, रीवा, मध्य प्रदेश, भारत</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">📞</div>
+                            <div>
+                                <h4>फोन और व्हाट्सएप</h4>
+                                <p>9993900108</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">✉️</div>
+                            <div>
+                                <h4>ईमेल</h4>
+                                <p>rvish230801@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">⏰</div>
+                            <div>
+                                <h4>कार्य समय</h4>
+                                <p>सोमवार - शनिवार: सुबह 9:00 - शाम 7:00</p>
+                                <p>रविवार: बंद</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>संदेश भेजें</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">आपका नाम</label>
+                            <input type="text" id="name" class="form-control" required>
+            
